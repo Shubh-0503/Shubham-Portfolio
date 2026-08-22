@@ -1,0 +1,590 @@
+{% load static %}
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Software Developer Portfolio</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            dark: '#0f172a',
+                            darker: '#020617',
+                            accent1: '#3b82f6',
+                            accent2: '#ef4444',
+                        }
+                    },
+                    backgroundImage: {
+                        'gradient-primary': 'linear-gradient(to right, #3b82f6, #ef4444)',
+                        'gradient-card': 'linear-gradient(to bottom right, rgba(30, 41, 59, 0.7), rgba(15, 23, 42, 0.7))',
+                    }
+                }
+            }
+        }
+    </script>
+    <style data-purpose="custom-styles">
+        body {
+            background-color: #0b1120;
+            color: #f8fafc;
+        }
+
+        .gradient-text {
+            background: linear-gradient(to right, #60a5fa, #f87171);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .card-border {
+            position: relative;
+            background: #0f172a;
+            border-radius: 0.75rem;
+            z-index: 1;
+        }
+
+        .card-border::before {
+            content: "";
+            position: absolute;
+            inset: -1px;
+            border-radius: 0.75rem;
+            background: linear-gradient(to bottom right, #1e3a8a, #7f1d1d);
+            z-index: -1;
+            opacity: 0.5;
+            transition: opacity 0.3s ease;
+        }
+
+        .card-border:hover::before {
+            opacity: 1;
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap"
+        rel="stylesheet" />
+    <!-- Include FontAwesome for icons (using a free CDN link for standard icons) -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+</head>
+
+<body class="antialiased font-sans flex flex-col min-h-screen">
+    <!-- BEGIN: Navigation -->
+    <header class="sticky top-0 z-50 bg-[#0b1120]/90 backdrop-blur-md border-b border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex-shrink-0">
+                    <a class="text-xl font-bold tracking-tight text-white" href="#">
+                        Software <span class="text-red-500">Developer</span>
+                    </a>
+                </div>
+                <nav class="hidden md:block">
+                    <ul class="flex space-x-8 text-sm font-medium text-gray-300">
+                        <li><a class="hover:text-white transition-colors" href="#home">Home</a></li>
+                        <li><a class="hover:text-white transition-colors" href="#about">About</a></li>
+                        <li><a class="hover:text-white transition-colors" href="#services">Services</a></li>
+                        <li><a class="hover:text-white transition-colors" href="#projects">Projects</a></li>
+                        <li><a class="hover:text-white transition-colors" href="#contact">Contact</a></li>
+                    </ul>
+                </nav>
+                <div class="hidden md:flex space-x-4 text-gray-400">
+                    <a class="px-4 py-2 bg-transparent border border-gray-600 rounded-full text-white text-sm hover:bg-gray-800 transition-colors"
+                        href="#">Hire Me <i class="fas fa-sparkles ml-1"></i></a>
+                </div>
+                <!-- Mobile menu button -->
+                <div class="md:hidden flex items-center">
+                    <button class="text-gray-300 hover:text-white focus:outline-none">
+                        <svg class="h-6 w-6" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                            <path d="M4 6h16M4 12h16M4 18h16" stroke-linecap="round" stroke-linejoin="round"
+                                stroke-width="2"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- END: Navigation -->
+    <main class="flex-grow">
+        <!-- BEGIN: Hero Section -->
+        <section class="py-20 lg:py-32 relative overflow-hidden" id="home">
+            <div
+                class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full max-w-4xl bg-blue-900/20 blur-[100px] rounded-full z-0 pointer-events-none">
+            </div>
+            <div
+                class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col lg:flex-row items-center gap-12 relative z-10">
+                <div class="w-full lg:w-1/2 space-y-8">
+                    <div>
+                        <h1 class="text-5xl md:text-6xl font-bold text-white mb-4">
+                            Hi, I'm<br />
+                            <span class="gradient-text">Shubham Bhagde</span>
+                        </h1>
+                        <p class="text-xl text-gray-300 leading-relaxed max-w-lg">
+                            I build scalable full-stack applications using Django, Python, JavaScript and MySQL. I love
+                            clean code and fast UIs.
+                        </p>
+                    </div>
+                    <div class="flex flex-wrap gap-4">
+                        <a class="bg-gradient-primary hover:opacity-90 text-white font-medium py-3 px-8 rounded-full shadow-lg transition-all"
+                            href="#projects">
+                            View Projects
+                        </a>
+                        <a class="bg-transparent border border-blue-500 hover:bg-blue-500/10 text-white font-medium py-3 px-8 rounded-full transition-all flex items-center gap-2"
+                            href="#contact">
+                            Let's Collaborate <i class="fas fa-arrow-right text-sm"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="w-full lg:w-1/2 flex justify-center lg:justify-end relative">
+                    <div
+                        class="relative w-72 h-72 md:w-96 md:h-96 rounded-full border border-gray-800 bg-[#0f172a] shadow-2xl flex items-center justify-center">
+                        <img alt="Shubh Bhagde" class="w-[90%] h-[90%] object-cover rounded-full"
+                            src="{% static './images/Shubh.jpg' %}" />
+                        <!-- Floating Icons -->
+                        <div
+                            class="absolute -top-4 -right-4 w-12 h-12 bg-[#1e293b] rounded-full flex items-center justify-center border border-gray-700 shadow-lg text-blue-400">
+                            <i class="fab fa-python text-2xl"></i>
+                        </div>
+                        <div
+                            class="absolute top-10 -left-6 w-10 h-10 bg-[#1e293b] rounded-full flex items-center justify-center border border-gray-700 shadow-lg text-blue-500">
+                            <i class="fas fa-share-alt text-xl"></i>
+                        </div>
+                        <div
+                            class="absolute bottom-1/4 -left-8 w-12 h-12 bg-[#1e293b] rounded-full flex items-center justify-center border border-gray-700 shadow-lg text-yellow-400">
+                            <i class="fab fa-js text-2xl"></i>
+                        </div>
+                        <div
+                            class="absolute -bottom-2 left-1/4 w-12 h-12 bg-[#1e293b] rounded-full flex items-center justify-center border border-gray-700 shadow-lg text-blue-500">
+                            <i class="fab fa-css3-alt text-2xl"></i>
+                        </div>
+                        <div
+                            class="absolute -bottom-4 right-1/4 w-12 h-12 bg-[#1e293b] rounded-full flex items-center justify-center border border-gray-700 shadow-lg text-orange-500">
+                            <i class="fab fa-html5 text-2xl"></i>
+                        </div>
+                        <div
+                            class="absolute top-1/2 -right-8 w-10 h-10 bg-[#1e293b] rounded-full flex items-center justify-center border border-gray-700 shadow-lg text-green-500">
+                            <i class="fab fa-node-js text-xl"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- END: Hero Section -->
+        <!-- BEGIN: About Section -->
+        <section class="py-20 lg:py-32" id="about">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col lg:flex-row items-center gap-12">
+                <!-- Profile Image -->
+                <div class="w-full lg:w-1/2 flex justify-center">
+                    <div class="relative rounded-2xl overflow-hidden max-w-md w-full aspect-[4/5] shadow-2xl">
+                        <img alt="Profile Picture" class="object-cover w-full h-full"
+                            src="{% static './images/Shubhprofile.jpeg' %}" />
+                        <div
+                            class="absolute inset-0 bg-gradient-to-t from-[#0b1120] via-transparent to-transparent opacity-60">
+                        </div>
+                    </div>
+                </div>
+                <!-- About Text -->
+                <div class="w-full lg:w-1/2 space-y-6">
+                    <h1 class="text-4xl md:text-5xl font-bold text-white">About Me</h1>
+                    <p class="text-gray-300 leading-relaxed">
+                        I am a Software Developer focusing on building production-ready applications! enjoy
+                        designing APIs, creating interactive user interfaces, and optimizing performance to deliver
+                        smooth and efficient user experiences.
+                    </p>
+                    <p class="text-gray-300 leading-relaxed">
+                        Along with strong problem-solving skills, I follow clean architecture principles and modern
+                        development patterns. I'm passionate about writing maintainable code, improving UI/UX flows, and
+                        building applications that feel fast, secure, and intuitive. I actively explore new tools in the
+                        Django ecosystem to stay updated and keep improving my development workflow.
+                    </p>
+                    <button type="button"
+                        onclick="window.open('https://drive.google.com/file/d/1vcbRjNAoCc2V9DrWy3sEJ1z5UaRy0zo5/view?usp=drivesdk', '_blank')"
+                        class="bg-gradient-primary hover:opacity-90 text-white font-medium py-3 px-6 rounded-lg shadow-lg transition-all flex items-center gap-2">
+
+                        Download Resume
+
+                        <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20">
+                            <!-- SVG -->
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </section>
+        <!-- END: About Section -->
+        <!-- BEGIN: Skills Section -->
+        <section class="py-20 bg-[#0f172a]/50" id="skills">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Skills &amp; Technologies</h2>
+                    <p class="text-gray-400 max-w-2xl mx-auto">I work with modern tools and technologies to build fast,
+                        scalable and efficient web applications.</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Skill Card 4 -->
+                    <div class="card-border p-8 flex flex-col items-center text-center group">
+                        <div class="w-16 h-16 mb-6 flex items-center justify-center text-green-500">
+                            <i class="fab fa-python text-5xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-white mb-3">Python</h3>
+                        <p class="text-gray-400 text-sm">Building scalable backend applications and efficient
+                            server-side solutions.</p>
+                    </div>
+                    <!-- Skill Card 4 -->
+                    <div class="card-border p-8 flex flex-col items-center text-center group">
+                        <div class="w-16 h-16 mb-6 flex items-center justify-center text-green-500">
+                            <i class="fab fa-python text-5xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-white mb-3">Django</h3>
+                        <p class="text-gray-400 text-sm">Building secure and scalable web applications with Django.
+                        </p>
+                    </div>
+                    <!-- Skill Card 1 -->
+                    <div class="card-border p-8 flex flex-col items-center text-center group">
+                        <div class="w-16 h-16 mb-6 flex items-center justify-center text-blue-500">
+                            <i class="fab fa-css3-alt text-5xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-white mb-3">Tailwind CSS</h3>
+                        <p class="text-gray-400 text-sm">Creating responsive, modern, and clean layouts quickly using
+                            utility-first styling.</p>
+                    </div>
+                    <!-- Skill Card 2 -->
+                    <div class="card-border p-8 flex flex-col items-center text-center group">
+                        <div class="w-16 h-16 mb-6 flex items-center justify-center text-yellow-400">
+                            <i class="fab fa-js-square text-5xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-white mb-3">JavaScript</h3>
+                        <p class="text-gray-400 text-sm">Writing efficient, modern, and optimized code for both frontend
+                            and backend logic.</p>
+                    </div>
+                    <!-- Skill Card 3 -->
+                    <div class="card-border p-8 flex flex-col items-center text-center group">
+                        <div class="w-16 h-16 mb-6 flex items-center justify-center text-blue-400">
+                            <i class="fab fa-react text-5xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-white mb-3">React</h3>
+                        <p class="text-gray-400 text-sm">Building fast, interactive, and component-based UIs with clean
+                            state management.</p>
+                    </div>
+
+                    <!-- Skill Card 5 -->
+                    <div class="card-border p-8 flex flex-col items-center text-center group">
+                        <div class="w-16 h-16 mb-6 flex items-center justify-center text-green-600">
+                            <i class="fas fa-database text-5xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-white mb-3">MySql</h3>
+                        <p class="text-gray-400 text-sm">Managing and organizing data with efficient database solutions.
+                        </p>
+                    </div>
+                    <!-- Skill Card 6 -->
+                    <div class="card-border p-8 flex flex-col items-center text-center group">
+                        <div class="w-16 h-16 mb-6 flex items-center justify-center text-orange-500">
+                            <i class="fab fa-html5 text-5xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-white mb-3">HTML</h3>
+                        <p class="text-gray-400 text-sm">Creating clean, well-structured page layouts with semantic
+                            markup for better accessibility and SEO.</p>
+                    </div>
+                    <!-- Skill Card 6 -->
+                    <div class="card-border p-8 flex flex-col items-center text-center group">
+                        <div class="w-16 h-16 mb-6 flex items-center justify-center text-orange-500">
+                            <i class="fa-solid fa-database text-5xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-white mb-3">PL/SQl</h3>
+                        <p class="text-gray-400 text-sm">Writing efficient database queries, procedures, and stored
+                            programs.
+                        </p>
+                    </div>
+                    <!-- Skill Card 6 -->
+                    <div class="card-border p-8 flex flex-col items-center text-center group">
+                        <div class="w-16 h-16 mb-6 flex items-center justify-center text-orange-500">
+                            <i class="fa-brands fa-git-alt text-5xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-white mb-3">GitHub</h3>
+                        <p class="text-gray-400 text-sm">Managing code changes and tracking project versions
+                            efficiently.
+                        </p>
+                    </div>
+
+
+                </div>
+            </div>
+        </section>
+        <!-- END: Skills Section -->
+        <!-- BEGIN: Services Section -->
+        <section class="py-20" id="services">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Services I Provide</h2>
+                    <p class="text-gray-400 max-w-2xl mx-auto">I offer design and development services focused on
+                        building fast, modern, and user-friendly digital experiences.</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <!-- Service 1 -->
+                    <div class="card-border p-6 flex flex-col items-center text-center">
+                        <div class="text-blue-400 mb-4"><i class="fas fa-laptop-code text-3xl"></i></div>
+                        <h3 class="text-lg font-semibold text-white mb-2">Full-Stack Web<br />Development</h3>
+                        <p class="text-xs text-gray-400">End-to-end web applications using React, Node.js, Express, and
+                            MongoDB with clean architecture and scalable code.</p>
+                    </div>
+                    <!-- Service 2 -->
+                    <div class="card-border p-6 flex flex-col items-center text-center">
+                        <div class="text-blue-400 mb-4"><i class="fas fa-code text-3xl"></i></div>
+                        <h3 class="text-lg font-semibold text-white mb-2">Frontend<br />Development</h3>
+                        <p class="text-xs text-gray-400">Fast, responsive, and user-friendly interfaces built with React
+                            and modern UI frameworks like Tailwind CSS.</p>
+                    </div>
+                    <!-- Service 3 -->
+                    <div class="card-border p-6 flex flex-col items-center text-center">
+                        <div class="text-blue-400 mb-4"><i class="fas fa-server text-3xl"></i></div>
+                        <h3 class="text-lg font-semibold text-white mb-2">Backend &amp; API<br />Development</h3>
+                        <p class="text-xs text-gray-400">Secure and efficient REST APIs using Node.js and Express,
+                            optimized for performance and scalability.</p>
+                    </div>
+                    <!-- Service 4 -->
+                    <div class="card-border p-6 flex flex-col items-center text-center">
+                        <div class="text-blue-400 mb-4"><i class="fas fa-database text-3xl"></i></div>
+                        <h3 class="text-lg font-semibold text-white mb-2">Database Design<br />&amp; Management</h3>
+                        <p class="text-xs text-gray-400">Well-structured MongoDB databases with optimized queries for
+                            speed, reliability, and data integrity.</p>
+                    </div>
+                    <!-- Service 5 -->
+                    <div class="card-border p-6 flex flex-col items-center text-center">
+                        <div class="text-blue-400 mb-4"><i class="fas fa-shield-alt text-3xl"></i></div>
+                        <h3 class="text-lg font-semibold text-white mb-2">Authentication &amp;<br />Authorization</h3>
+                        <p class="text-xs text-gray-400">Implementation of secure login systems using JWT, role-based
+                            access control, and best security practices.</p>
+                    </div>
+                    <!-- Service 6 -->
+                    <div class="card-border p-6 flex flex-col items-center text-center">
+                        <div class="text-blue-400 mb-4"><i class="fas fa-shopping-cart text-3xl"></i></div>
+                        <h3 class="text-lg font-semibold text-white mb-2">E-Commerce<br />Development</h3>
+                        <p class="text-xs text-gray-400">Product listings, cart systems, checkout flows, and payment
+                            gateway integrations for demo or real projects.</p>
+                    </div>
+                    <!-- Service 7 -->
+                    <div class="card-border p-6 flex flex-col items-center text-center">
+                        <div class="text-blue-400 mb-4"><i class="fas fa-tachometer-alt text-3xl"></i></div>
+                        <h3 class="text-lg font-semibold text-white mb-2">Performance<br />Optimization</h3>
+                        <p class="text-xs text-gray-400">Improving load times, API response speed, and overall
+                            application performance for better user experience.</p>
+                    </div>
+                    <!-- Service 8 -->
+                    <div class="card-border p-6 flex flex-col items-center text-center">
+                        <div class="text-blue-400 mb-4"><i class="fas fa-cloud-upload-alt text-3xl"></i></div>
+                        <h3 class="text-lg font-semibold text-white mb-2">Deployment &amp;<br />Hosting Support</h3>
+                        <p class="text-xs text-gray-400">Deploying applications on cloud platforms with proper
+                            environment setup and production-ready configuration.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- END: Services Section -->
+        <!-- BEGIN: Projects Section -->
+        <section class="py-20 bg-[#0f172a]/50" id="projects">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Recent Projects</h2>
+                    <p class="text-gray-400 max-w-2xl mx-auto">Here are some of the real-world projects I've built using
+                        the MERN stack.</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <!-- Project 1 -->
+                    <div class="card-border p-6 flex flex-col rounded-xl overflow-hidden">
+                        <div class="aspect-video w-full rounded-lg overflow-hidden mb-6 bg-gray-800">
+                            <img alt="MERN Todo App Preview" class="w-full h-full object-cover"
+                                src="{% static 'images/Project1.jpeg' %}" />
+                        </div>
+                        <h3 class="text-2xl font-bold text-white mb-3">ERP System</h3>
+                        <p class="text-gray-400 text-sm mb-6 flex-grow"> A full-stack ERP system for managing sales,
+                            inventory, HR, procurement, finance, and reports.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="px-3 py-1 bg-[#1e293b] text-blue-400 text-xs rounded-full">Djnago</span>
+                            <span class="px-3 py-1 bg-[#1e293b] text-blue-400 text-xs rounded-full">Python</span>
+                            <span class="px-3 py-1 bg-[#1e293b] text-blue-400 text-xs rounded-full">JavaScript</span>
+                            <span class="px-3 py-1 bg-[#1e293b] text-blue-400 text-xs rounded-full">PostgreSQL</span>
+                        </div>
+                        <div class="flex gap-4">
+                            <a class="px-5 py-2 bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white text-sm font-medium rounded-lg transition-colors flex items-center gap-2"
+                                href="https://github.com/Shubh-0503">
+                                GitHub <i class="fas fa-external-link-alt text-xs"></i>
+                            </a>
+                            <a class="px-5 py-2 bg-gradient-to-r from-blue-500 to-blue-400 hover:from-blue-600 hover:to-blue-500 text-white text-sm font-medium rounded-lg transition-colors flex items-center gap-2"
+                                href="#">
+                                Live Demo <i class="fas fa-external-link-alt text-xs"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <!-- Project 2 -->
+                    <div class="card-border p-6 flex flex-col rounded-xl overflow-hidden">
+                        <div class="aspect-video w-full rounded-lg overflow-hidden mb-6 bg-gray-800">
+                            <img alt="Agriculture Equipment Rental System Demo Preview"
+                                class="w-full h-full object-cover" src="{% static 'images/Project2.jpeg' %}" />
+                        </div>
+                        <h3 class="text-2xl font-bold text-white mb-3">Online Agriculture Equipment Rental System</h3>
+                        <p class="text-gray-400 text-sm mb-6 flex-grow">A web-based platform for renting agricultural
+                            equipment with easy booking and equipment management.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="px-3 py-1 bg-[#1e293b] text-blue-400 text-xs rounded-full">Django</span>
+                            <span class="px-3 py-1 bg-[#1e293b] text-blue-400 text-xs rounded-full">Python</span>
+                            <span class="px-3 py-1 bg-[#1e293b] text-blue-400 text-xs rounded-full">JavaScript</span>
+                            <span class="px-3 py-1 bg-[#1e293b] text-blue-400 text-xs rounded-full">SQLite</span>
+                        </div>
+                        <div class="flex gap-4">
+                            <a class="px-5 py-2 bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white text-sm font-medium rounded-lg transition-colors flex items-center gap-2"
+                                href="https://github.com/Shubh-0503">
+                                GitHub <i class="fas fa-external-link-alt text-xs"></i>
+                            </a>
+                            <a class="px-5 py-2 bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white text-sm font-medium rounded-lg transition-colors flex items-center gap-2"
+                                href="#">
+                                Live Demo <i class="fas fa-external-link-alt text-xs"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- END: Projects Section -->
+        <!-- BEGIN: Contact Section -->
+        <section class="py-20" id="contact">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Contact Us</h2>
+                    <p class="text-gray-400 max-w-2xl mx-auto">Have a project in mind? Let's connect and discuss how I
+                        can help bring your ideas to life.</p>
+                </div>
+                <div
+                    class="flex flex-col lg:flex-row gap-12 bg-gradient-to-br from-[#0f172a] to-[#020617] p-8 md:p-12 rounded-2xl shadow-xl border border-gray-800 relative overflow-hidden">
+                    <!-- Decorative elements for the contact box -->
+                    <div
+                        class="absolute top-0 right-0 w-64 h-64 bg-blue-500 opacity-5 rounded-full blur-3xl -mr-20 -mt-20">
+                    </div>
+                    <div
+                        class="absolute bottom-0 left-0 w-64 h-64 bg-red-500 opacity-5 rounded-full blur-3xl -ml-20 -mb-20">
+                    </div>
+                    <!-- Contact Info -->
+                    <div class="w-full lg:w-2/5 space-y-8 z-10">
+                        <div>
+                            <h3 class="text-3xl font-bold text-white mb-4">Get in touch today</h3>
+                            <p class="text-gray-400 leading-relaxed">I'm always open to discussing new projects,
+                                creative ideas, or opportunities to be part of your vision.</p>
+                        </div>
+                        <div class="space-y-6">
+                            <div class="flex items-start gap-4">
+                                <div class="text-blue-400 mt-1"><i class="far fa-envelope"></i></div>
+                                <div>
+                                    <p class="text-white font-medium">shubhambhagde2002@gmail.com</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-4">
+                                <div class="text-blue-400 mt-1"><i class="fas fa-phone-alt"></i></div>
+                                <div>
+                                    <p class="text-white font-medium">+91 7620165493</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-4">
+                                <div class="text-blue-400 mt-1"><i class="fas fa-map-marker-alt"></i></div>
+                                <div>
+                                    <p class="text-white font-medium">Pune, Maharashtra,<br />India</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Contact Form -->
+                    <div class="w-full lg:w-3/5 z-10">
+                        <form method="POST" class="card-border p-8 rounded-xl space-y-6">
+                            {% csrf_token %} <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-300 mb-2" for="name">Name</label>
+                                    <input
+                                        class="w-full bg-[#0b1120] border border-gray-700 rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-colors"
+                                        id="name" name="name" placeholder="Your Name" type="text" />
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-300 mb-2"
+                                        for="email">Email</label>
+                                    <input
+                                        class="w-full bg-[#0b1120] border border-gray-700 rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-colors"
+                                        id="email" name="email" placeholder="example@email.com" type="email" />
+                                </div>
+                            </div>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-300 mb-2"
+                                        for="phone">Phone</label>
+                                    <input
+                                        class="w-full bg-[#0b1120] border border-gray-700 rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-colors"
+                                        id="phone" name="phone" placeholder="(123) 456 - 789" type="tel" />
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-300 mb-2"
+                                        for="company">Company</label>
+                                    <input
+                                        class="w-full bg-[#0b1120] border border-gray-700 rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-colors"
+                                        id="company" name="company" placeholder="abc" type="text" />
+                                </div>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-300 mb-2"
+                                    for="message">Message</label>
+                                <textarea
+                                    class="w-full bg-[#0b1120] border border-gray-700 rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-colors resize-none"
+                                    id="message" name="message" placeholder="Please type your message here..."
+                                    rows="4"></textarea>
+                            </div>
+                            <button
+                                class="w-full bg-gradient-primary hover:opacity-90 text-white font-medium py-4 rounded-lg shadow-lg transition-opacity"
+                                type="submit">
+                                Send message
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- END: Contact Section -->
+    </main>
+    <!-- BEGIN: Footer -->
+    <footer class="bg-[#0b1120] pt-16 pb-8 border-t border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center mb-12">
+                <div class="mb-6 md:mb-0">
+                    <a class="text-xl font-bold tracking-tight text-white" href="#">
+                        MERN Stack <span class="text-red-500">Developer</span>
+                    </a>
+                </div>
+                <nav class="mb-6 md:mb-0">
+                    <ul class="flex flex-wrap justify-center gap-8 text-sm font-medium text-gray-300">
+                        <li><a class="hover:text-white transition-colors" href="#home">Home</a></li>
+                        <li><a class="hover:text-white transition-colors" href="#about">About</a></li>
+                        <li><a class="hover:text-white transition-colors" href="#services">Services</a></li>
+                        <li><a class="hover:text-white transition-colors" href="#projects">Projects</a></li>
+                        <li><a class="hover:text-white transition-colors" href="#contact">Contact</a></li>
+                    </ul>
+                </nav>
+                <div class="flex space-x-4">
+                    <a class="w-10 h-10 rounded-full bg-blue-600 flex items-center justify-center text-white hover:bg-blue-700 transition-colors"
+                        href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a class="w-10 h-10 rounded-full bg-blue-400 flex items-center justify-center text-white hover:bg-blue-500 transition-colors"
+                        href="#"><i class="fab fa-twitter"></i></a>
+                    <a class="w-10 h-10 rounded-full bg-pink-600 flex items-center justify-center text-white hover:bg-pink-700 transition-colors"
+                        href="#"><i class="fab fa-instagram"></i></a>
+                    <a class="w-10 h-10 rounded-full bg-blue-700 flex items-center justify-center text-white hover:bg-blue-800 transition-colors"
+                        href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <div
+                class="border-t border-gray-800 pt-8 flex flex-col md:flex-row items-center justify-center text-sm text-gray-500 text-center">
+                <div>
+                    Copyright © 2025 Sajid Yaqub | All Rights Reserved
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- END: Footer -->
+</body>
+
+</html>
