@@ -23,12 +23,16 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-a8g9gydg)6ep1s($inm3)ttc*wsn9p0u-*n0j@3*r-spnl^kcn'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = [
     "shubham-portfolio-5.onrender.com",
     "localhost",
     "127.0.0.1",
+]
+
+CSRF_TRUSTED_ORIGINS = [
+    "https://shubham-portfolio-5.onrender.com",
 ]
 
 # Application definition
