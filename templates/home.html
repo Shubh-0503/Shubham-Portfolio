@@ -400,73 +400,6 @@
         </section>
         <!-- END: Skills Section -->
         <!-- BEGIN: Services Section -->
-        <section class="py-20" id="services">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center mb-16">
-                    <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Services I Provide</h2>
-                    <p class="text-gray-400 max-w-2xl mx-auto">I offer design and development services focused on
-                        building fast, modern, and user-friendly digital experiences.</p>
-                </div>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                    <!-- Service 1 -->
-                    <div class="card-border p-6 flex flex-col items-center text-center">
-                        <div class="text-blue-400 mb-4"><i class="fas fa-laptop-code text-3xl"></i></div>
-                        <h3 class="text-lg font-semibold text-white mb-2">Full-Stack Web<br />Development</h3>
-                        <p class="text-xs text-gray-400">End-to-end web applications using React, Node.js, Express, and
-                            MongoDB with clean architecture and scalable code.</p>
-                    </div>
-                    <!-- Service 2 -->
-                    <div class="card-border p-6 flex flex-col items-center text-center">
-                        <div class="text-blue-400 mb-4"><i class="fas fa-code text-3xl"></i></div>
-                        <h3 class="text-lg font-semibold text-white mb-2">Frontend<br />Development</h3>
-                        <p class="text-xs text-gray-400">Fast, responsive, and user-friendly interfaces built with React
-                            and modern UI frameworks like Tailwind CSS.</p>
-                    </div>
-                    <!-- Service 3 -->
-                    <div class="card-border p-6 flex flex-col items-center text-center">
-                        <div class="text-blue-400 mb-4"><i class="fas fa-server text-3xl"></i></div>
-                        <h3 class="text-lg font-semibold text-white mb-2">Backend &amp; API<br />Development</h3>
-                        <p class="text-xs text-gray-400">Secure and efficient REST APIs using Node.js and Express,
-                            optimized for performance and scalability.</p>
-                    </div>
-                    <!-- Service 4 -->
-                    <div class="card-border p-6 flex flex-col items-center text-center">
-                        <div class="text-blue-400 mb-4"><i class="fas fa-database text-3xl"></i></div>
-                        <h3 class="text-lg font-semibold text-white mb-2">Database Design<br />&amp; Management</h3>
-                        <p class="text-xs text-gray-400">Well-structured MongoDB databases with optimized queries for
-                            speed, reliability, and data integrity.</p>
-                    </div>
-                    <!-- Service 5 -->
-                    <div class="card-border p-6 flex flex-col items-center text-center">
-                        <div class="text-blue-400 mb-4"><i class="fas fa-shield-alt text-3xl"></i></div>
-                        <h3 class="text-lg font-semibold text-white mb-2">Authentication &amp;<br />Authorization</h3>
-                        <p class="text-xs text-gray-400">Implementation of secure login systems using JWT, role-based
-                            access control, and best security practices.</p>
-                    </div>
-                    <!-- Service 6 -->
-                    <div class="card-border p-6 flex flex-col items-center text-center">
-                        <div class="text-blue-400 mb-4"><i class="fas fa-shopping-cart text-3xl"></i></div>
-                        <h3 class="text-lg font-semibold text-white mb-2">E-Commerce<br />Development</h3>
-                        <p class="text-xs text-gray-400">Product listings, cart systems, checkout flows, and payment
-                            gateway integrations for demo or real projects.</p>
-                    </div>
-                    <!-- Service 7 -->
-                    <div class="card-border p-6 flex flex-col items-center text-center">
-                        <div class="text-blue-400 mb-4"><i class="fas fa-tachometer-alt text-3xl"></i></div>
-                        <h3 class="text-lg font-semibold text-white mb-2">Performance<br />Optimization</h3>
-                        <p class="text-xs text-gray-400">Improving load times, API response speed, and overall
-                            application performance for better user experience.</p>
-                    </div>
-                    <!-- Service 8 -->
-                    <div class="card-border p-6 flex flex-col items-center text-center">
-                        <div class="text-blue-400 mb-4"><i class="fas fa-cloud-upload-alt text-3xl"></i></div>
-                        <h3 class="text-lg font-semibold text-white mb-2">Deployment &amp;<br />Hosting Support</h3>
-                        <p class="text-xs text-gray-400">Deploying applications on cloud platforms with proper
-                            environment setup and production-ready configuration.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
         <!-- END: Services Section -->
         <!-- BEGIN: Projects Section -->
         <section class="py-20 bg-[#0f172a]/50" id="projects">
@@ -583,7 +516,18 @@
                     <!-- Contact Form -->
                     <div class="w-full lg:w-3/5 z-10">
                         <form method="POST" class="card-border p-8 rounded-xl space-y-6">
-                            {% csrf_token %} <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            {% csrf_token %}
+
+                            {% if messages %}
+                            {% for message in messages %}
+                            <div id="success-message"
+                                class="mb-4 p-4 rounded-lg border border-green-500/30 bg-green-500/10 text-green-400">
+                                {{ message }}
+                            </div>
+                            {% endfor %}
+                            {% endif %}
+
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                                 <div>
                                     <label class="block text-sm font-medium text-gray-300 mb-2" for="name">Name</label>
                                     <input
@@ -640,14 +584,13 @@
             <div class="flex flex-col md:flex-row justify-between items-center mb-12">
                 <div class="mb-6 md:mb-0">
                     <a class="text-xl font-bold tracking-tight text-white" href="#">
-                        MERN Stack <span class="text-red-500">Developer</span>
+                        Python <span class="text-red-500">Developer</span>
                     </a>
                 </div>
                 <nav class="mb-6 md:mb-0">
                     <ul class="flex flex-wrap justify-center gap-8 text-sm font-medium text-gray-300">
                         <li><a class="hover:text-white transition-colors" href="#home">Home</a></li>
                         <li><a class="hover:text-white transition-colors" href="#about">About</a></li>
-                        <li><a class="hover:text-white transition-colors" href="#services">Services</a></li>
                         <li><a class="hover:text-white transition-colors" href="#projects">Projects</a></li>
                         <li><a class="hover:text-white transition-colors" href="#contact">Contact</a></li>
                     </ul>
@@ -660,13 +603,13 @@
                     <a class="w-10 h-10 rounded-full bg-pink-600 flex items-center justify-center text-white hover:bg-pink-700 transition-colors"
                         href="#"><i class="fab fa-instagram"></i></a>
                     <a class="w-10 h-10 rounded-full bg-blue-700 flex items-center justify-center text-white hover:bg-blue-800 transition-colors"
-                        href="#"><i class="fab fa-linkedin-in"></i></a>
+                        href="https://www.linkedin.com/in/shubham-bhagde-1b959826a" target="_blank"><i class="fab fa-linkedin-in"></i></a>
                 </div>
             </div>
             <div
                 class="border-t border-gray-800 pt-8 flex flex-col md:flex-row items-center justify-center text-sm text-gray-500 text-center">
                 <div>
-                    Copyright © 2025 Sajid Yaqub | All Rights Reserved
+                    Copyright © 2026 Shubham Bhagde | All Rights Reserved
                 </div>
             </div>
         </div>
@@ -706,6 +649,20 @@
             });
 
         });
+
+        // Message section 
+        setTimeout(function () {
+        const message = document.getElementById("success-message");
+
+        if (message) {
+            message.style.transition = "opacity 0.5s ease";
+            message.style.opacity = "0";
+
+            setTimeout(function () {
+                message.remove();
+            }, 500);
+        }
+    }, 3000);
     </script>
 
 </body>
